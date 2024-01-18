@@ -1,0 +1,40 @@
+﻿/*.custom-btn {
+    border: 3px dashed black;
+    background-color: dimgray;
+    color: #F9F6EE;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 30px;
+}
+
+.container-color {
+    background-color: #FF2400;
+}
+
+.links-colors {
+    color: purple;
+}
+
+.White-Text {
+    color: #F9F6EE;
+}
+
+h1, h2, p,
+td, th {
+    color: #F9F6EE;
+}
+
+
+#TheFooter {
+    color: #000;
+}
+
+.custom-btn-sm {
+    border: 2px dashed black;
+    background-color: dimgray;
+    color: #F9F6EE;
+    padding: 5px 10px;
+    font-size: 15px;
+    border-radius: 15px;
+}
+*/

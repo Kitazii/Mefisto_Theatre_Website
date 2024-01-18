@@ -1,0 +1,99 @@
+﻿@model K_Burns_Assessment_2.Models.BlogPost
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<style>
+    .custom-btn-sm {
+        border: 2px dashed black;
+        background-color: dimgray;
+        color: #F9F6EE;
+        padding: 5px 10px;
+        font-size: 15px;
+        border-radius: 15px;
+    }
+</style>
+
+<h2 class="text-center">Delete My Post</h2>
+<h4 class="text-center White-Text mt-3">Are you sure you want to delete this?</h4>
+
+<br />
+
+<div class="row d-flex justify-content-center">
+    <div class="col-md-6 d-flex justify-content-center">
+        <dl class="row White-Text">
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Category.Name)
+            </dt>
+
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Category.Name)
+            </dd>
+
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.User.FirstName)
+            </dt>
+
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.User.FirstName)
+            </dd>
+
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
+
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Content)
+            </dt>
+
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Content)
+            </dd>
+
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.BlogPosted)
+            </dt>
+
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.BlogPosted)
+            </dd>
+
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.DatePosted)
+            </dt>
+
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.DatePosted)
+            </dd>
+
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.DateEdited)
+            </dt>
+
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.DateEdited)
+            </dd>
+
+        </dl>
+    </div>
+</div>
+
+<div class="d-inline d-flex justify-content-center">
+    <p>@Html.ActionLink("Back to Post", "MyPostBlog", null, new { @class = "links-colors" })</p>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group ms-5">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="DELETE" class="btn btn-outline-secondary custom-btn-sm" />
+            </div>
+        </div>
+    }
+</div>

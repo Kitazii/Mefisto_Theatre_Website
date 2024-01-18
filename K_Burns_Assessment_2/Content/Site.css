@@ -1,0 +1,204 @@
+﻿/* Set padding to keep content from hitting the edges */
+.body-content {
+    margin-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.Spacing {
+    display: inline;
+}
+
+.SpacingLeft {
+    display: inline;
+    margin-left: 75px;
+}
+
+.SpacingRight {
+    display: inline;
+    margin-right: 10px;
+}
+
+.nav-text {
+    color: #F9F6EE;
+}
+
+/* Layout ID's */
+
+#grad {
+    background-image: linear-gradient(to right, red, orange 90%, red);
+}
+
+#nav-title {
+    color: #FAF9F6;
+    font-weight: 500;
+}
+
+.list-group-item,
+.list-group-item-danger {
+    /* Add your common styling for list items here */
+    padding: 10px;
+    margin-bottom: 0px;
+    border: 3px solid #000000;
+}
+
+
+.list-group-item-danger {
+    /* Additional styling for items with list-group-item-danger class */
+    background-color: #FF2400;
+    color: White;
+}
+
+.margin-top {
+    margin-top: 50px;
+}
+
+.custom-btn {
+    border: 3px dashed black;
+    background-color: dimgray;
+    color: #F9F6EE;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 30px;
+}
+
+.container-color {
+    background-color: #FF2400;
+}
+
+.custom-btn-sm {
+    border: 2px dashed black;
+    background-color: dimgray;
+    color: #F9F6EE;
+    padding: 5px 10px;
+    font-size: 15px;
+    border-radius: 15px;
+}
+
+.orangered-btn-sm {
+    border: 2px dashed black;
+    background-color: orangered;
+    color: #F9F6EE;
+    padding: 5px 10px;
+    font-size: 15px;
+    border-radius: 15px;
+}
+
+.orange-btn-sm {
+    border: 2px dashed black;
+    background-color: darkorange;
+    color: #F9F6EE;
+    padding: 5px 10px;
+    font-size: 15px;
+    border-radius: 15px;
+}
+
+.gold-btn-sm {
+    border: 2px dashed black;
+    background-color: darkgoldenrod;
+    color: #F9F6EE;
+    padding: 5px 10px;
+    font-size: 15px;
+    border-radius: 15px;
+}
+
+.hr-size {
+    border: 0;
+    border-top: 2px solid #000000;
+    opacity: revert;
+}
+
+.category-link:hover {
+    background-color: orange;
+    color: white;
+    cursor: pointer;
+}
+
+.blog-titles {
+    text-decoration: none;
+    color: purple;
+    font-size: large;
+    font-weight: bold;
+}
+
+.img-left-positioning {
+    float: left;
+    margin-right: 20px;
+    width: 80px;
+}
+
+.img-right-positioning {
+    float: right;
+    margin-right: 20px;
+    width: 80px;
+}
+
+.grey-text {
+    color: lightgray;
+}
+
+.blog-anchor:hover {
+    color: white;
+    cursor: pointer;
+}
+
+.hr-size {
+    border: 0;
+    border-top: 1px solid #000000;
+    opacity: revert;
+}
+
+.alert-warning {
+    --bs-alert-color: #000000;
+    --bs-alert-bg: #FFA500;
+    --bs-alert-border-color: #FFA500;
+}
+
+.col-lg-6 {
+    width: 100%;
+}
+
+.col-lg-5 {
+    width: 40%;
+    margin-left: revert;
+}
+
+.black-text {
+    color: #000000;
+}
+
+.dark-grey-text {
+    color: #171717;
+}
+
+.links-colors {
+    color: blue;
+}
+
+.White-Text {
+    color: #F9F6EE;
+}
+
+h1, h2, p,
+td, th {
+    color: #F9F6EE;
+}
+
+
+#TheFooter {
+    color: #000;
+}

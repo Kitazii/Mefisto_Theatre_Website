@@ -1,0 +1,84 @@
+﻿@model K_Burns_Assessment_2.Models.ViewModels.PersonaliseDetailsViewModel
+
+@{
+    ViewBag.Title = "Personalise";
+}
+
+<h2 class="text-center">Personalise @Model.Role</h2>
+<h4 class="text-center White-Text">Are you sure you want to make changes?</h4>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <hr />
+
+    @Html.HiddenFor(model => model.UserName)
+
+<div class="ms-4">
+    @Html.ValidationSummary("", new { @class = "text-warning" })
+
+    <div class="row">
+        @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 col-form-label fw-bold White-Text" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-warning" })
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 col-form-label fw-bold White-Text" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-warning" })
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.Street, new { @class = "col-md-2 col-form-label fw-bold White-Text" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Street, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Street, "", new { @class = "text-warning" })
+        </div>
+    </div>
+
+
+    <div class="row">
+        @Html.LabelFor(m => m.City, new { @class = "col-md-2 col-form-label fw-bold White-Text" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.City, "", new { @class = "text-warning" })
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.Postcode, new { @class = "col-md-2 col-form-label fw-bold White-Text" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Postcode, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Postcode, "", new { @class = "text-warning" })
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 col-form-label fw-bold White-Text" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-warning" })
+        </div>
+    </div>
+
+    <div class="row">
+        @Html.LabelFor(m => m.NewPassword, new { @class = "col-md-2 col-form-label fw-bold White-Text" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.NewPassword, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-center d-inline mt-5">
+        <p>@Html.ActionLink("Back to View Users", "ViewUsers", null, new { @class = "links-colors" })</p>
+
+        <div class="form-group ms-5">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="SAVE" class="btn btn-outline-secondary custom-btn-sm" />
+            </div>
+        </div>
+    </div>
+</div>
+}
+

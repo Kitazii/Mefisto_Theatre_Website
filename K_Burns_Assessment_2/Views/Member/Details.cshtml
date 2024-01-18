@@ -1,0 +1,91 @@
+﻿@model K_Burns_Assessment_2.Models.BlogPost
+
+@{
+    ViewBag.Title = "MemberDetails";
+}
+
+
+<h2 class="text-center">My Blog Post Details</h2>
+
+<br />
+
+<div class="row d-flex justify-content-center">
+    <div class="col-md-6 d-flex justify-content-center">
+        <dl class="row White-Text">
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Category.Name)
+            </dt>
+
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Category.Name)
+            </dd>
+
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.User.FirstName)
+            </dt>
+
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.User.FirstName)
+            </dd>
+
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
+
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Content)
+            </dt>
+
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Content)
+            </dd>
+
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.BlogPosted)
+            </dt>
+
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.BlogPosted)
+            </dd>
+
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.DatePosted)
+            </dt>
+
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.DatePosted)
+            </dd>
+
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.DateEdited)
+            </dt>
+
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.DateEdited)
+            </dd>
+
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Comments)
+            </dt>
+
+            <dd class="col-sm-8">
+                @foreach (var item in Model.Comments)
+                {
+                    <div class="mb-2">
+                        @item.CommentText
+                    </div>
+
+                    <hr />
+                }
+            </dd>
+        </dl>
+    </div>
+</div>
+<p class="text-center">
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BlogPostID }, new { @class = "links-colors" }) |
+    @Html.ActionLink("Back to Posts", "MyPostBlog", null, new { @class = "links-colors" })
+</p>

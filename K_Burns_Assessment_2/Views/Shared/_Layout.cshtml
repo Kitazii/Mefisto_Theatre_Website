@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Mefisto Blogs</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark" id="grad">
+        <div class="container">
+            @Html.ActionLink("MEFISTO BLOGS", "Index", "Home", new { area = "" }, new { @class = "navbar-brand", id = "nav-title" })
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li>@Html.ActionLink("HOME", "Index", "Home", new { area = "" }, new { @class = "nav-link nav-text" })</li>
+                    <li>@Html.ActionLink("BLOG POSTS", "Index", "Blogs", new { area = "" }, new { @class = "nav-link nav-text" })</li>
+                    <li>@Html.ActionLink("ABOUT", "About", "Home", new { area = "" }, new { @class = "nav-link nav-text" })</li>
+                    <li>@Html.ActionLink("CONTACT", "Contact", "Home", new { area = "" }, new { @class = "nav-link nav-text" })</li>
+                    <!--If the request is authenticated-->
+                    @if (Request.IsAuthenticated)
+                    {
+                        <!-- And if the user role is equal to admin-->
+                        if (User.IsInRole("Admin"))
+                        {
+                            <!-- Display Navigational property-->
+                            <li>@Html.ActionLink("POST A BLOG", "MyBlogPost", "Admin", new { area = "" }, new { @class = "nav-link nav-text" })</li>
+                            <li>@Html.ActionLink("ADMIN", "Index", "Admin", new { area = "" }, new { @class = "nav-link nav-text" })</li>
+                        }
+
+                        <!-- If the user is a member-->
+                        if (User.IsInRole("Member"))
+                        {
+                            <!-- Display Navigational property-->
+                            <li>@Html.ActionLink("POST A BLOG", "MyPostBlog", "Member", new { area = "" }, new { @class = "nav-link nav-text" })</li>
+                        }
+                        <!-- If the user is a staff-->
+                        if (User.IsInRole("Staff"))
+                        {
+                            <!-- Display Navigational property-->
+                            <li>@Html.ActionLink("POST A BLOG", "MyBlogPost", "Staff", new { area = "" }, new { @class = "nav-link nav-text" })</li>
+                            <li>@Html.ActionLink("STAFF", "Index", "Staff", new { area = "" }, new { @class = "nav-link nav-text" })</li>
+                        }
+                    }
+                </ul>
+                 @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content">
+        @if (ViewBag.Title != "Blogs")
+        {
+            <div class="container-color py-5 col-lg-12 margin-top">
+                @RenderBody()
+            </div>
+        }
+        else
+        {
+            @RenderBody()
+        }
+        <hr />
+        <footer>
+            <p class="SpacingRight" id="TheFooter">&copy; @DateTime.Now.Year - Mefisto Theatre Company</p>
+            <img src="~/Images/Icons/favicon-32x32.png" alt="Favicon" />
+        </footer>
+    </div>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,35 @@
+﻿@model IEnumerable<K_Burns_Assessment_2.Models.BlogPost>
+
+@{
+    ViewBag.Title = "Blogs";
+}
+
+<div class="row">
+    @Html.Partial("_SearchCategoryPartial")
+
+
+
+    <div class="container-fluid py-5 col-lg-9 margin-top" style="background-color: #FF2400">
+        <hr class="hr-size"/>
+        @if (Model.Count() == 0)
+        {
+            <h4 class="White-Text text-center">No posts to display; please select another category!</h4>
+        }
+        else
+        {
+            foreach(var item in Model)
+            {
+                <div>
+                    <a href="@Url.Action("Blog","Blogs", new { id = item.BlogPostID })" class="blog-titles">
+                        @item.Title
+                    </a>
+                    <p class="fw-bold">@item.Category.Name</p>
+                    <p>@item.Content</p>
+                </div>
+                <hr class="hr-size"/>
+            }
+        }
+    </div>
+</div>
+
+

@@ -1,0 +1,92 @@
+﻿@model IEnumerable<K_Burns_Assessment_2.Models.User>
+@using K_Burns_Assessment_2.Models
+
+@{
+    ViewBag.Title = "ViewUsers";
+}
+
+<h2 class="text-center">Admin Page: View All Users</h2>
+
+<br />
+
+<p class="text-center">
+    @Html.ActionLink("Create New Staff", "CreateEmployee", "Admin", new { @class = "btn btn-outline-secondary custom-btn" })
+</p>
+
+<hr class="hr-size"/>
+<br />
+
+<div class="d-flex justify-content-center">
+    @using (Html.BeginForm())
+    {
+        <p class="fw-bold">
+            Find User by Username: @Html.TextBox("SearchString")
+
+            <input type="submit" value="SEARCH" class="btn btn-outline-secondary custom-btn-sm" />
+        </p>
+    }
+</div>
+
+<hr class="hr-size" />
+
+
+<table class="table">
+    <tr class="border-dark">
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RegisteredAt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsSuspended)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CurrentRole)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr class="border-dark">
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegisteredAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsSuspended)
+            </td>
+            <th>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.CurrentRole)
+            </td>
+
+            <!--If eerors occur come back to Lab 3 - at the top Pg23-->
+            <td>
+                @Html.ActionLink("Suspend", "Suspend", new { id = item.Id }, new { @class = "btn btn-outline-secondary orangered-btn-sm" }) |
+                @Html.ActionLink("Promote", "Promote", new { id = item.Id }, new { @class = "btn btn-outline-secondary orange-btn-sm" }) |
+                @Html.ActionLink("Personalise", "Personalise", new { id = item.Id }, new { @class = "btn btn-outline-secondary gold-btn-sm" })
+            </td>
+        </tr>
+    }
+
+</table>

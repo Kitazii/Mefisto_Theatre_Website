@@ -1,0 +1,74 @@
+﻿@model IEnumerable<K_Burns_Assessment_2.Models.Comment>
+
+@{
+    ViewBag.Title = "Staff Remove";
+}
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<h2 class="text-center"> Remove This Post Comments</h2>
+<h4 class="text-center White-Text mt-3">Are you sure you want to Remove the selected?</h4>
+
+<br />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="row ms-3">
+        <div class="col-md-6 form-horizontal">
+
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group row mb-3">
+                <div class="col-sm-4">
+                    @Html.LabelFor(model => model.First().CommentID, "Comment", htmlAttributes: new { @class = "control-label White-Text" })
+                </div>
+                <!--Creating SelectListItem directly in the view-->
+                <div class="col-8">
+                    @Html.DropDownListFor(model => model.First().CommentID, Model.Select(c => new SelectListItem { Text = c.CommentText, Value = c.CommentID.ToString() }), new { htmlAttributes = new { @class = "form-control mb-3" } })
+                    @Html.ValidationMessageFor(model => model.First().CommentID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <br />
+            <br />
+
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-center d-inline">
+        <p>@Html.ActionLink("Back to Post", "ManageUsersPosts", null, new { @class = "links-colors" })</p>
+
+
+        <div class="form-group ms-5">
+            <div class="col-md-offset-2 col-md-10">
+                @*<input type="submit" value="REMOVE SELECTED" class="btn btn-outline-secondary custom-btn-sm" />*@
+                 <!-- Add the modal trigger button here -->
+                <button type="button" class="btn btn-outline-secondary custom-btn-sm" data-bs-toggle="modal" data-bs-target="#removeConfirmModal" style="width:160px;">
+                    REMOVE SELECTED
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Remove Confirm Modal -->
+    <div class="modal fade" id="removeConfirmModal" tabindex="-1" aria-labelledby="removeConfirmModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="removeConfirmModalLabel">Remove Confirmation</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body container-color">
+                    <p>Are you sure you want to remove the selected item?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <input type="submit" value="Remove" class="btn btn-danger" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

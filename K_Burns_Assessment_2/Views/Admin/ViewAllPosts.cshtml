@@ -1,0 +1,82 @@
+﻿@model IEnumerable<K_Burns_Assessment_2.Models.BlogPost>
+
+
+@{
+    ViewBag.Title = "ViewAllPosts";
+
+    var loggedInUserId = ViewBag.LoggedInUserId;
+}
+
+<h2 class="text-center">Admin: Manage All Users Posts</h2>
+
+<br />
+
+
+<table class="table">
+    <tr class="border-dark">
+        <th>
+            @Html.DisplayNameFor(model => model.Category.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Content)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BlogPosted)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DatePosted)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateEdited)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        @*@Html.HiddenFor(modelItem => item.Comments)*@
+<tr class="text-truncate border-dark">
+    <td>
+        @Html.DisplayFor(modelItem => item.Category.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.User.FirstName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Title)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Content)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.BlogPosted)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DatePosted)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DateEdited)
+    </td>
+    @if (loggedInUserId == item.User.Id)
+    {
+        <td style="margin-left:50px;">
+            @Html.ActionLink("Comments", "RemoveComments", new { id = item.BlogPostID }, new { @class = "btn btn-outline-secondary orangered-btn-sm", style = "margin-left: 95px;" })
+        </td>
+    }
+    else
+    {
+        <td>
+            @Html.ActionLink("Comments", "RemoveComments", new { id = item.BlogPostID }, new { @class = "btn btn-outline-secondary orangered-btn-sm" }) |
+            @Html.ActionLink("Details", "Details", new { id = item.BlogPostID }, new { @class = "btn btn-outline-secondary orange-btn-sm" }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.BlogPostID }, new { @class = "btn btn-outline-secondary gold-btn-sm" })
+        </td>
+    }
+</tr>
+    }
+</table>
+

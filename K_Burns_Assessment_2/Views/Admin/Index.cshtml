@@ -1,0 +1,17 @@
+﻿@model K_Burns_Assessment_2.Models.ViewModels.ChangeRoleViewModel
+
+@{
+    ViewBag.Title = "Index Admin";
+}
+
+
+<div class="container container-color py-5 col-lg-12">
+    <h2 class="text-center">Admin Page</h2>
+
+    <br />
+
+    <div class="d-flex justify-content-center">
+        @Html.ActionLink("View All Users", "ViewUsers", "Admin", new { @class = "btn btn-outline-secondary custom-btn me-5" })
+        @Html.ActionLink("Manage Users Posts", "ViewAllPosts", "Admin", new { @class = "btn btn-outline-secondary custom-btn ms-5" })
+    </div>
+</div>

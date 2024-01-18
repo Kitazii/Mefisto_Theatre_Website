@@ -1,0 +1,16 @@
+﻿@model K_Burns_Assessment_2.Models.ViewModels.ChangeRoleViewModel
+
+@{
+    ViewBag.Title = "Index Staff";
+}
+
+<div class="container container-color py-5 col-lg-12">
+    <h2 class="text-center">Staff Page</h2>
+
+    <br />
+
+    <div class="d-flex justify-content-center">
+        @Html.ActionLink("Manage Users Posts", "ManageUsersPosts", "Staff", new { @class = "btn btn-outline-secondary custom-btn" })
+    </div>
+</div>
+

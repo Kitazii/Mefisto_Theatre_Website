@@ -1,0 +1,137 @@
+﻿@model K_Burns_Assessment_2.Models.BlogPost
+
+@{
+    ViewBag.Title = "Blog";
+
+    var loggedInUser = ViewBag.LoggedInUser;
+    var comments = ViewBag.Comments;
+    var isSuspended = ViewBag.IsUserSuspended;
+}
+
+<!--***************************************************ALL*****************************************************************************-->
+
+<div class="container-fluid py-5 col-lg-9 margin-top" style="background-color: #FF2400; overflow: hidden;">
+
+    <!-- Left Image -->
+    <img src="~/images/Icons/@Model.Category.Name .png" alt="Left Image" class="img-left-positioning" />
+
+    <!-- Right Image -->
+    <img src="~/images/Icons/@Model.Category.Name Mirror .png" alt="Right Image" class="img-right-positioning" />
+
+    <!--****************************************TITLE & CATEOGRY NAME************************************************************-->
+
+    <div style="overflow: hidden;">
+        <!-- Container to clear the float -->
+        <h2 class="text-center">@Model.Title</h2>
+        <h3 class="text-center White-Text">@Model.Category.Name</h3>
+    </div>
+
+    <br />
+
+    <!--****************************************MAIN BODY************************************************************-->
+
+    <div>
+        <p class="White-Text">@Model.Content</p>
+        <p class="grey-text fw-bold d-inline">Post on: @Model.DatePosted By @Model.User.FirstName in @Model.Category.Name</p>
+        <a class="White-Text fw-bold blog-anchor float-end">@Model.Comments.Count() Comments</a>
+
+        <hr class="hr-size" />
+
+
+        @Html.ActionLink("Previous Post", "Blog", new { postId = Model.BlogPostID, direction = "Previous" }, new { @class = "White-Text blog-anchor fw-bold" })
+        @Html.ActionLink("Next Post", "Blog", new { postId = Model.BlogPostID, direction = "Next" }, new { @class = "White-Text blog-anchor float-end fw-bold" })
+
+        <hr class="hr-size" />
+    </div>
+
+
+    <!--****************************************OTHERS COMMENTS************************************************************-->
+    <div>
+        <h5 class="White-Text text-decoration-underline">Comments</h5>
+        @if (loggedInUser == "")
+        {
+            <div class="alert alert-warning">
+                <strong>USER MUST BE LOGGED IN AS A USER TO WRITE A COMMENT.</strong>
+            </div>
+        }
+
+        @if (isSuspended)
+        {
+            <div class="alert alert-danger">
+                <strong>@loggedInUser IS SUSPENDED FROM COMMENTING.</strong>
+            </div>
+        }
+
+        <!--****************************************COMMENT POSTED CONFIRMATION***********************************************-->
+
+        @if (TempData["AlertMessage"] != null)
+        {
+            <br />
+            <div class="alert alert-success">
+                <strong>@TempData["AlertMessage"]</strong>
+            </div>
+            <br />
+        }
+
+        @if (TempData["EmptyComment"] != null)
+        {
+            <br />
+            <div class="alert alert-warning">
+                <strong>@TempData["EmptyComment"]</strong>
+            </div>
+            <br />
+        }
+
+        <!--****************************************USERS COMMENTS************************************************************-->
+        @if (loggedInUser != "" && isSuspended == false)
+        {
+            <div class="container-fluid py-3 col-lg-6 mb-3 mt-3" style="border-radius: 20px; background-color: dimgray">
+                <p class="White-Text fw-bold fst-italic">@loggedInUser:</p>
+
+
+                @using (Html.BeginForm("Blog", "Blogs", new { id = Model.BlogPostID }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    @Html.HiddenFor(model => model.BlogPostID)
+                    @Html.HiddenFor(model => model.BlogPosted)
+                    @Html.HiddenFor(model => model.DatePosted)
+                    @Html.HiddenFor(model => model.User)
+
+                    <div class="form-group col-lg-5">
+                        @Html.EditorFor(model => model.NewCommentText, new { htmlAttributes = new { @class = "form-control mb-3" } })
+                        @Html.ValidationMessageFor(model => model.NewCommentText, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group ms-3">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="COMMENT" class="btn btn-outline-secondary custom-btn-sm" onclick="return ConfirmationDialog()" />
+                        </div>
+                    </div>
+                }
+
+            </div>
+        }
+
+        @foreach (var item in comments)
+        {
+            <div class="container-fluid py-3 col-lg-6 mb-3" style="border-radius: 20px; background-color: white;">
+                <p class="black-text fw-bold fst-italic" style="margin-bottom: 0rem;">@item.User.FirstName</p>
+                <p class="black-text fw-bold fst-italic opacity-25">@item.DatePosted</p>
+                <p class="dark-grey-text">@item.CommentText</p>
+            </div>
+
+        }
+
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    function ConfirmationDialog() {
+        if (confirm("Are you sure to post the Comment?"))
+            return true;
+        else
+            return false;
+    }
+</script>

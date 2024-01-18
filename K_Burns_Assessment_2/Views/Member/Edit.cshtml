@@ -1,0 +1,89 @@
+﻿@model K_Burns_Assessment_2.Models.BlogPost
+
+@{
+    ViewBag.Title = "Member Edit";
+}
+
+<h2 class="text-center">Edit My Blog Post</h2>
+
+<br />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+<div class="row ms-3">
+    <div class="col-md-6 form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-warning" })
+        @Html.HiddenFor(model => model.BlogPostID)
+        @Html.HiddenFor(model => model.DatePosted)
+
+        <div class="form-group row">
+            <div class="col-sm-4">
+                @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label White-Text" })
+            </div>
+            <div class="col-sm-6">
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control mb-3" } })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-warning" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-4">
+                @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label White-Text" })
+            </div>
+            <div class="col-sm-8">
+                @Html.EditorFor(model => model.Content, new { htmlAttributes = new { @class = "form-control mb-3" } })
+                @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-warning" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-4">
+                @Html.LabelFor(model => model.BlogPosted, htmlAttributes: new { @class = "control-label White-Text" })
+            </div>
+            <div class="col-sm-8">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.BlogPosted, new { htmlAttributes = new { @class = "mb-3" } })
+                    @Html.ValidationMessageFor(model => model.BlogPosted, "", new { @class = "text-warning" })
+                </div>
+            </div>
+        </div>
+
+
+        <!--<div class="form-group row mb-3">
+            <div class="col-sm-4">-->
+                @*@Html.LabelFor(model => model.Comments, "Comment", htmlAttributes: new { @class = "control-label White-Text" })*@
+            <!--</div>
+            <div class="col-8">-->
+                @*@Html.DropDownList("Comments", (IEnumerable<SelectListItem>)ViewBag.CommentId, new { htmlAttributes = new { @class = "form-control mb-3" } })*@
+                @*@Html.ValidationMessageFor(model => model.Comments, "", new { @class = "text-danger" })*@
+            <!--</div>
+        </div>-->
+
+        <div class="form-group row">
+            <div class="col-sm-4">
+                @Html.LabelFor(model => model.CategoryID, "Category", htmlAttributes: new { @class = "control-label White-Text" })
+            </div>
+            <div class="col-sm-8">
+                @Html.DropDownList("CategoryID", null, new { htmlAttributes = new { @class = "form-control mb-3" } })
+                @Html.ValidationMessageFor(model => model.CategoryID, "", new { @class = "text-warning" })
+            </div>
+        </div>
+
+        <br />
+        <br />
+
+    </div>
+</div>
+
+<div class="d-flex justify-content-center d-inline">
+    <p>@Html.ActionLink("Back to Post", "MyPostBlog", null, new { @class = "links-colors" })</p>
+
+    <div class="form-group ms-5">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="SAVE" class="btn btn-outline-secondary custom-btn-sm" />
+        </div>
+    </div>
+</div>
+    }

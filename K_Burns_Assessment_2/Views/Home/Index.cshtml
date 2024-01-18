@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Blogs";
+}
+<link href="~/Content/Site.css" rel="stylesheet"/>
+
+<div class="row">
+    @Html.Partial("_SearchCategoryPartial")
+
+    <div class="container-fluid py-5 col-lg-9 margin-top" style="background-color: #FF2400">
+        <h1 class="text-center nav-text">Welcome all</h1>
+        <br />
+        <p class="nav-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <br />
+
+        <div class="d-flex justify-content-center">
+            <!--Spacing the first image a both left and right for equal spacing between the outer div and image-->
+            <img src="~/Images/MovieReviews.jpg" class="img-fluid ms-3 me-3"/>
+            <img src="~/Images/android-chrome-192x192.png" class="img-fluid me-3"/>
+            <img src="~/Images/PerformanceReviews.jpg" class="img-fluid me-3"/>
+            <img src="~/Images/OtherRelatedInfo.jpg" class="img-fluid me-3"/>
+        </div>
+
+    </div>
+</div>
