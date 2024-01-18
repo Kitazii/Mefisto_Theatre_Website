@@ -38,7 +38,6 @@ namespace K_Burns_Assessment_2.Models.ViewModels
 
         [DataType(DataType.PhoneNumber)]
         [Display(Name = "Phone Number:")]
-        [Required]
         public string PhoneNumber { get; set; }
 
         [Display(Name = "Phone Confirm:")]
