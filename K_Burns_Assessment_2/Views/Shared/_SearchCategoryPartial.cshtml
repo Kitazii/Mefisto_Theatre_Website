@@ -1,6 +1,8 @@
 ﻿@model IEnumerable<K_Burns_Assessment_2.Models.BlogPost>
 @{
     ViewBag.Title = "Category";
+
+    var category = ViewBag.SelectedCategory;
 }
 
 <div class="col-lg-3">
@@ -12,4 +14,19 @@
             <a href="@Url.Action("Blogs", "Blogs", new { id = item.CategoryID})" class="list-group-item list-group-item-danger category-link">@item.Name</a>
         }
     </div>
+    <div class="m-3 ms-5">
+        @if (category == null && category != "Home")
+        {
+            
+            <img src="~/Images/android-chrome-192x192.png" class="img-fluid" />
+            
+        }
+        else if (category != "Home")
+        {
+            
+            <img src="~/Images/@category .jpg" class="img-fluid" />
+            
+        }
+    </div>
+
 </div>

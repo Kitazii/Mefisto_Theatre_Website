@@ -282,9 +282,10 @@
     <Content Include="Images\Icons\Performance Reviews .png" />
     <Content Include="Images\Icons\Post Announcement Mirror .png" />
     <Content Include="Images\Icons\Post Announcement .png" />
-    <Content Include="Images\MovieReviews.jpg" />
-    <Content Include="Images\OtherRelatedInfo.jpg" />
-    <Content Include="Images\PerformanceReviews.jpg" />
+    <Content Include="Images\MovieReviews .jpg" />
+    <Content Include="Images\OtherRelatedInfo .jpg" />
+    <Content Include="Images\PerformanceReviews .jpg" />
+    <Content Include="Images\PostAnnouncement .jpg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />

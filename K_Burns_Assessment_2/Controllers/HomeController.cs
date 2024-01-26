@@ -16,6 +16,8 @@ namespace K_Burns_Assessment_2.Controllers
             var blogs = context.BlogPosts.ToList();
 
             ViewBag.Categories = context.Categories.ToList();
+            ViewBag.SelectedCategory = "Home";
+
             return View(blogs);
         }
 

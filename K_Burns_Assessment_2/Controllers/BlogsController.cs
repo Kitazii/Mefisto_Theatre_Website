@@ -43,6 +43,12 @@ namespace K_Burns_Assessment_2.Controllers
             //sending all the categories in a viewbag
             ViewBag.Categories = context.Categories.ToList();
 
+            //get selected category
+            string selectedCategory = blogs.FirstOrDefault().Category.Name;
+
+            //Send all selected cateogry in a viewbag
+            ViewBag.SelectedCategory = RemoveSpaces(selectedCategory);
+
             return View("Blogs", blogs);
         }
 
@@ -171,6 +177,14 @@ namespace K_Burns_Assessment_2.Controllers
             }
             // Redirect to the blog post page regardless
             return RedirectToAction("Blog", id);
+        }
+
+        //other userful methods
+        
+        //remove spacing in strings
+        static string RemoveSpaces(string input)
+        {
+            return input.Replace(" ", "");
         }
     }
 }
