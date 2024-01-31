@@ -46,7 +46,7 @@ namespace K_Burns_Assessment_2.Controllers
             //get selected category
             string selectedCategory = blogs.FirstOrDefault().Category.Name;
 
-            //Send all selected cateogry in a viewbag
+            //Send all selected cateogry in a viewbag to 'search category' partial page
             ViewBag.SelectedCategory = RemoveSpaces(selectedCategory);
 
             return View("Blogs", blogs);
